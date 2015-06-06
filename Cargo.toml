@@ -1,0 +1,8 @@
+[package]
+name = "TravelingSalesman"
+version = "0.1.0"
+authors = ["charles"]
+
+[dependencies]
+rand = "*"
+num = "*"
