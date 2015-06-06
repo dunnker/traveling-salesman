@@ -1,5 +1,4 @@
 extern crate rand;
-use std::thread;
 use tour::*;
 use city::*;
 
