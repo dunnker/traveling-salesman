@@ -59,7 +59,11 @@ The function set_relative_fitness is used to initialize the Tour's relative_fitn
 ```rust
 pub fn set_relative_fitness(&mut self, total_fitness: f32, average_fitness: f32)
 ```
-Besides relative_fitness, there is amplified_fitness as well. This is similar to relative_fitness, however its value is either magnified or shrunk by a factor, AMPLIFY_FACTOR, relative to the average fitness of each tour in the  population. The selection function in population.rs uses amplified_fitness instead of relative_fitness because I found that each tour had essentially the same relative_fitness, and the roulette style selection function was not doing a good enough job of selecting out the highest individual tours for the next generation. The selection function is called get_random_tour:
+Besides relative_fitness, there is amplified_fitness as well. This is similar to relative_fitness, however its value is either magnified or shrunk by a factor, AMPLIFY_FACTOR, relative to the average fitness of each tour in the  population. 
+```rust
+    self.amplified_fitness = (self.fitness + ((self.fitness - average_fitness) * AMPLIFY_FACTOR)) / total_fitness;
+```
+The selection function in population.rs uses amplified_fitness instead of relative_fitness because I found that each tour had essentially the same relative_fitness, and the roulette style selection function was not doing a good enough job of selecting out the highest individual tours for the next generation. The selection function is called get_random_tour:
 
 ```rust
 pub fn get_random_tour(&self, random_value: f32) -> usize {
