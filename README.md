@@ -70,8 +70,8 @@ pub fn get_random_tour(&self, random_value: f32) -> usize {
     let mut relative_total: f32 = 0.0;
     let mut result: usize = 0;
     if self.total_fitness > 0.0 {
-        // randomValue is a number between 0 and 1.0
-        // relativeTotal increments from 0 to 1.0
+        // random_value is a number between 0 and 1.0
+        // relative_total increments from 0 to 1.0
         for i in 0..POP_COUNT {
             if random_value < relative_total + self.tours[i].amplified_fitness {
                 result = i;
