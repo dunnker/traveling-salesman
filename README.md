@@ -94,4 +94,4 @@ In ga.rs the classic algorithm is implemented in a static struct called GA, sinc
 With my roulette style fitness function, I found I had similar results to Lee's Java implementation using a tournament style selection. I found that the resulting executable was very fast, which is encouraging me to continue to use Rust. Next I want to explore Rust's foolproof concurrency features to improve performance further. Hope this was helpful to anyone getting started with Rust like me ;)
 
 Discussion regarding this project can be found on reddit:
-https://www.reddit.com/r/rust/comments/38vdg8/my_first_rust_program_traveling_salesman_solved/
+https://www.reddit.com/r/rust/comments/38vf9u/my_first_rust_program_solving_the_traveling/
