@@ -1,8 +1,4 @@
 extern crate rand;
-//#if multi_threaded
-//use std::sync::*;
-//use std::thread;
-//#endif
 use rand::Rng;
 use population::*;
 use tour::*;
@@ -17,10 +13,6 @@ impl GA {
         let mut new_population = Population::new();
         let mut tours = Vec::new();
 
-        //#if multi_threaded
-        //let shared_pop = Arc::new(pop);
-        //#endif
-
         // Crossover population
         // Loop over the new population's size and create individuals from
         // Current population
@@ -28,27 +20,8 @@ impl GA {
             let random_value1: f32 = rng.gen::<f32>();
             let random_value2: f32 = rng.gen::<f32>();
 
-            //#if multi_threaded
-            /*let thread_pop1 = shared_pop.clone();
-            let result1 = thread::spawn(move || {
-                let local_pop = &thread_pop1;
-                // return the index of a random tour
-                local_pop.get_random_tour(random_value1)
-            });
-
-            let thread_pop2 = shared_pop.clone();
-            let result2 = thread::spawn(move || {
-                let local_pop = &thread_pop2;
-                // return the index of a random tour
-                local_pop.get_random_tour(random_value2)
-            });
-            let main_pop = shared_pop.clone();
-            let parent1 = &main_pop.get_tour(result1.join().unwrap());
-            let parent2 = &main_pop.get_tour(result2.join().unwrap());*/
-            //#else
             let parent1 = pop.get_tour(pop.get_random_tour(random_value1));
             let parent2 = pop.get_tour(pop.get_random_tour(random_value2));
-            //#endif
 
             // Crossover parents
             let child: Tour = GA::crossover(rng, &parent1, &parent2);
